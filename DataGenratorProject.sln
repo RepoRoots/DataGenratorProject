@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataGenrator", "DataGenrator\DataGenrator.csproj", "{165ADE6B-85C1-4773-BAEF-B067B14CAEA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataModels", "DataModels\DataModels.csproj", "{CFA7F82E-8DCB-4DAA-84A4-93E37A3AB126}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{165ADE6B-85C1-4773-BAEF-B067B14CAEA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{165ADE6B-85C1-4773-BAEF-B067B14CAEA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{165ADE6B-85C1-4773-BAEF-B067B14CAEA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{165ADE6B-85C1-4773-BAEF-B067B14CAEA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFA7F82E-8DCB-4DAA-84A4-93E37A3AB126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA7F82E-8DCB-4DAA-84A4-93E37A3AB126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA7F82E-8DCB-4DAA-84A4-93E37A3AB126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA7F82E-8DCB-4DAA-84A4-93E37A3AB126}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {13FF5B48-9EDF-42CF-9E00-95A3F24674C7}
+	EndGlobalSection
+EndGlobal
