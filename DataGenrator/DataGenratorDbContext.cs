@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using DbGenratorWithBogus.DbModels;
+using DataModels;
 
 namespace DbGenratorWithBogus
 {
@@ -13,6 +14,7 @@ namespace DbGenratorWithBogus
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

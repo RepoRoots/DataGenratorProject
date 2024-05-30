@@ -6,6 +6,7 @@ using Bogus;
 using DbGenratorWithBogus.DbModels;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using DataModels;
 
 namespace DbGenratorWithBogus
 {
@@ -42,6 +43,10 @@ namespace DbGenratorWithBogus
             // Generate data for order details
             var existingOrderIds = orders.Select(o => o.OrderId).ToList();
             await GenerateAndInsertDataAsync<OrderDetail>(context, () => GenerateOrderDetails(existingOrderIds), "OrderDetails", 2000000, 100000);
+
+            // Generate data for users
+            await GenerateAndInsertDataAsync<User>(context, () => GenerateUsers(1000000), "Users", 1000000, 100000);
+
 
             Console.WriteLine("Data insertion completed!");
             Console.WriteLine("Press any key to exit...");
@@ -127,5 +132,16 @@ namespace DbGenratorWithBogus
                 .RuleFor(od => od.UnitPrice, f => f.Random.Decimal(1, 1000))
                 .Generate(2000000);
         }
+
+        static List<User> GenerateUsers(int count)
+        {
+            var userFaker = new Faker<User>();
+            return userFaker.RuleFor(u => u.Username, f => f.Internet.UserName())
+                            .RuleFor(u => u.Password, f => f.Internet.Password())
+                            .RuleFor(u => u.Role, f => f.Random.Bool() ? "Admin" : "User")
+                            .Generate(count);
+        }
+
+
     }
 }
