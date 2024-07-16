@@ -11,7 +11,7 @@ namespace DbGenratorWithBogus.DbModels
         public int CustomerId { get; set; }
 
         [ForeignKey(nameof(CustomerId))]
-        public Customer Customer { get; set; } 
+        public required Customer Customer { get; set; } 
 
         public DateTime OrderDate { get; set; } 
 
