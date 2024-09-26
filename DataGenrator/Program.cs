@@ -31,17 +31,17 @@ namespace DbGenratorWithBogus
             await context.Database.EnsureCreatedAsync();
 
             // Generate data for products
-            await GenerateAndInsertDataAsync<Product>(context, () => GenerateProducts(1000000), "Products", 1000000, 100000);
+            await GenerateAndInsertDataAsync<Product>(context, () => GenerateProducts(1000), "Products", 1000, 1000);
 
             // Generate data for customers
-            await GenerateAndInsertDataAsync<Customer>(context, () => GenerateCustomers(1000000), "Customers", 1000000, 100000);
+            await GenerateAndInsertDataAsync<Customer>(context, () => GenerateCustomers(1000), "Customers", 1000, 1000);
 
             // Generate data for orders
-            var orders = await GenerateAndInsertDataAsync<Order>(context, () => GenerateOrders(500000), "Orders", 500000, 100000);
+            var orders = await GenerateAndInsertDataAsync<Order>(context, () => GenerateOrders(500), "Orders", 500, 1000);
 
             // Generate data for order details
             var existingOrderIds = orders.Select(o => o.OrderId).ToList();
-            await GenerateAndInsertDataAsync<OrderDetail>(context, () => GenerateOrderDetails(existingOrderIds), "OrderDetails", 2000000, 100000);
+            await GenerateAndInsertDataAsync<OrderDetail>(context, () => GenerateOrderDetails(existingOrderIds), "OrderDetails", 200, 1000);
 
             // Generate data for users
 
@@ -114,10 +114,10 @@ namespace DbGenratorWithBogus
         static List<Order> GenerateOrders(int count)
         {
             var orderFaker = new Faker<Order>();
-            return orderFaker.RuleFor(o => o.CustomerId, f => f.Random.Int(1, 1000000))
+            return orderFaker.RuleFor(o => o.CustomerId, f => f.Random.Int(1, 1000))
                 .RuleFor(o => o.OrderDate, f => f.Date.Past(5))
                 .RuleFor(o => o.ShippingAddress, f => f.Address.StreetAddress())
-                .RuleFor(o => o.TotalAmount, f => f.Random.Decimal(10, 10000))
+                .RuleFor(o => o.TotalAmount, f => f.Random.Decimal(10, 1000))
                 .Generate(count);
         }
 
@@ -125,10 +125,10 @@ namespace DbGenratorWithBogus
         {
             var orderDetailFaker = new Faker<OrderDetail>();
             return orderDetailFaker.RuleFor(od => od.OrderId, f => f.PickRandom(existingOrderIds))
-                .RuleFor(od => od.ProductId, f => f.Random.Int(1, 1000000))
+                .RuleFor(od => od.ProductId, f => f.Random.Int(1, 1000))
                 .RuleFor(od => od.Quantity, f => f.Random.Int(1, 10))
                 .RuleFor(od => od.UnitPrice, f => f.Random.Decimal(1, 1000))
-                .Generate(2000000);
+                .Generate(2000);
         }
 
 
